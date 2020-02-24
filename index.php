@@ -18,7 +18,7 @@ task2('-', 1, 2, 3);
 echo '<br>';
 echo '<br>';
 
-task3(4,6);
+echo task3(4,6);
 
 echo '<br>';
 echo '<br>';

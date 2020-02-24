@@ -16,33 +16,37 @@ function task2(...$arg)
     $operands = '';
     $res = 0;
 
-    if ($arg[0] == '+') {
-        for ($i = 1; $i < sizeof($arg); $i++) {
-            $operands .= $i == sizeof($arg) - 1 ? $arg[$i] . ' = ' : $arg[$i] . ' ' . $arg[0] . ' ';
-            $res += $arg[$i];
-        }
-    } elseif ($arg[0] == '-') {
-        $res = $arg[1];
-        for ($i = 1; $i < sizeof($arg); $i++) {
-            $operands .= $i == sizeof($arg) - 1 ? $arg[$i] . ' = ' : $arg[$i] . ' ' . $arg[0] . ' ';
-            if ($arg[$i + 1] != null) {
-                $res -= $arg[$i + 1];
+    switch ($arg[0]) {
+        case '+':
+            for ($i = 1; $i < sizeof($arg); $i++) {
+                $operands .= $i == sizeof($arg) - 1 ? $arg[$i] . ' = ' : $arg[$i] . ' ' . $arg[0] . ' ';
+                $res += $arg[$i];
             }
-        }
-    } elseif ($arg[0] == '*') {
-        $res = 1;
-        for ($i = 1; $i < sizeof($arg); $i++) {
-            $operands .= $i == sizeof($arg) - 1 ? $arg[$i] . ' = ' : $arg[$i] . ' ' . $arg[0] . ' ';
-            $res *= $arg[$i];
-        }
-    } elseif ($arg[0] == '/') {
-        $res = $arg[1];
-        for ($i = 1; $i < sizeof($arg); $i++) {
-            $operands .= $i == sizeof($arg) - 1 ? $arg[$i] . ' = ' : $arg[$i] . ' ' . $arg[0] . ' ';
-            if ($arg[$i + 1] != null) {
-                $res /= $arg[$i + 1];
+            break;
+        case '-':
+            $res = $arg[1];
+            for ($i = 1; $i < sizeof($arg); $i++) {
+                $operands .= $i == sizeof($arg) - 1 ? $arg[$i] . ' = ' : $arg[$i] . ' ' . $arg[0] . ' ';
+                if ($arg[$i + 1] != null) {
+                    $res -= $arg[$i + 1];
+                }
             }
-        }
+            break;
+        case '*':
+            $res = 1;
+            for ($i = 1; $i < sizeof($arg); $i++) {
+                $operands .= $i == sizeof($arg) - 1 ? $arg[$i] . ' = ' : $arg[$i] . ' ' . $arg[0] . ' ';
+                $res *= $arg[$i];
+            }
+            break;
+        case '/':
+            $res = $arg[1];
+            for ($i = 1; $i < sizeof($arg); $i++) {
+                $operands .= $i == sizeof($arg) - 1 ? $arg[$i] . ' = ' : $arg[$i] . ' ' . $arg[0] . ' ';
+                if ($arg[$i + 1] != null) {
+                    $res /= $arg[$i + 1];
+                }
+            }
     }
 
     echo $operands . $res . '<br>';
@@ -62,9 +66,9 @@ function task3($num1, $num2)
                 </tr>
             <?php } ?>
         </table>
-    <? } else {
-        echo 'Передайте целые числа';
+        <? return;
     }
+    echo 'Передайте целые числа';
 }
 
 function task4($name)
